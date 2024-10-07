@@ -1,0 +1,563 @@
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        #file_manage {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 0 2px 0;
+            border-bottom: 2px solid rgb(185, 185, 185);
+        }
+
+        .p_host {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 0 2px 0;
+            border-bottom: 2px solid rgb(185, 185, 185);
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to right, #57bfff, #feb47b);
+            user-select: none;
+        }
+
+        .icon {
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .global-bar-top {
+            position: fixed;
+            height: 25px;
+            padding: 1px 2px;
+            width: 100vw;
+            border-bottom: 1px solid rgb(209, 209, 209);
+        }
+
+        .global-menu {
+            white-space: nowrap;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .global-menu::-webkit-scrollbar {
+            display: none;
+        }
+
+        .global-menu-item {
+            color: black;
+            height: 25px;
+            line-height: 25px;
+            display: inline-block;
+            margin: 0 1px;
+            padding: 0 9px;
+            font-size: 15px;
+            user-select: none;
+            cursor: default;
+        }
+
+        .global-menu-item:hover {
+            background-color: #EEEEEE;
+            border-radius: 5px;
+        }
+
+        .global-bar-left {
+            position: fixed;
+            top: 27px;
+            width: 40px;
+            height: calc(100vh - 27px - 27px);
+            border-right: 1px solid rgb(209, 209, 209);
+        }
+
+        .global-leftbar-item {
+            height: 28px;
+            width: 28px;
+            padding: 4px;
+            margin: 2px;
+            user-select: none;
+            cursor: default;
+        }
+
+        .global-leftbar-item:hover {
+            background-color: #EEEEEE;
+            border-radius: 5px;
+        }
+
+
+        .global-bar-bottom {
+            position: fixed;
+            top: calc(100vh - 27px);
+            width: 100vw;
+            height: 25px;
+            border: 1px 2px;
+            border-top: 1px solid rgb(209, 209, 209);
+            z-index: 2;
+        }
+
+        .global-bar-middle {
+            position: fixed;
+            top: 27px;
+            width: 90px;
+            left: 41px;
+            height: calc(100vh - 27px - 27px);
+            border-right: 1px solid rgb(209, 209, 209);
+            overflow: hidden;
+            /* 隐藏溢出的内容 */
+            white-space: nowrap;
+            /* 不换行 */
+            text-overflow: ellipsis;
+            /* 溢出时显示省略号 */
+            z-index: 999;
+        }
+
+        .global-context {
+            position: fixed;
+            top: 27px;
+            left: 131px;
+            width: calc(100vw - 41px - 0px);
+            height: calc(100vh - 27px - 27px);
+            z-index: 1;
+        }
+
+        .document-bar-top {
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid rgb(209, 209, 209);
+        }
+
+        .document-path {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 80%;
+            padding: 0 10px;
+            line-height: 40px;
+        }
+
+        .show_photo {
+            position: absolute;
+            width: 800px;
+            height: calc(100% - 40px);
+            overflow: auto;
+            border-right: 2px solid rgb(209, 209, 209);
+            border-top: 2px solid rgb(209, 209, 209);
+
+            img {
+                width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                opacity: 0.9;
+                display: block;
+                margin: auto;
+            }
+
+            .operate {
+                margin-bottom: 2px;
+
+                span {
+                    display: inline-block;
+                    width: 50px;
+                    margin-left: 2px;
+                    font-size: 25px;
+                    text-align: center;
+                    background-color: rgb(84, 167, 215);
+                    cursor: pointer;
+                    opacity: 0.6;
+                    border-radius: 6px;
+                }
+            }
+        }
+
+
+
+
+        .show_PDF {
+            position: relative;
+            left: 800px;
+            width: 610px;
+            border: rgb(209, 209, 209) 2px solid;
+
+
+        }
+
+
+        .compile_PDF {
+            margin: 10px;
+            border: rgb(209, 209, 209) 2px solid;
+            overflow: auto;
+            height: 665px;
+            overflow-y: auto;
+
+            img {
+                display: block;
+                width: 100%;
+                opacity: 0.7;
+            }
+        }
+
+        .compile_button {
+            height: 70px;
+            margin: 10px;
+            border: rgb(209, 209, 209) 2px solid;
+
+            .button {
+                display: inline-block;
+                border-radius: 15px;
+                /* 调整按钮的边框圆角 */
+                background-color: #ffcd8f;
+                /* 修改背景颜色 */
+                border: 3px rgb(219, 245, 255) solid;
+                color: #000000;
+                font-size: 16px;
+                font-weight: 400;
+                width: 100px;
+                height: 60px;
+                cursor: pointer;
+                margin: 5px;
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+                opacity: 0.6;
+                cursor: pointer;
+                vertical-align: middle;
+                border-radius: 10px;
+
+
+            }
+        }
+
+        span {
+            user-select: none;
+        }
+
+        .photo_border {
+            position: relative;
+            border-bottom: 1px solid rgb(93, 93, 93);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+
+            .image_name {
+                display: inline-block;
+                width: 100%;
+                height: 30px;
+                vertical-align: middle;
+                background-color: rgb(131, 226, 255);
+            }
+        }
+
+
+        .photo_border:hover {
+            cursor: pointer;
+        }
+
+        .photo_border span {
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            vertical-align: middle;
+            background-color: rgb(131, 226, 255);
+        }
+
+        .photo_border img {
+            vertical-align: middle;
+            position: relative;
+            left: 0px;
+            width: 30px;
+            height: 100%;
+            opacity: 0.7;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .server-form-overlay {
+            position: fixed;
+            top: 50px;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .server-form {
+            width: 100%;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            margin: 10px auto;
+
+            /* 水平居中 */
+            padding: 20px;
+            /* 添加内边距 */
+            max-width: 500px;
+            max-height: 700px;
+            /* 设置最大宽度 */
+
+        }
+
+        .adapt-form {
+            height: 600px;
+            overflow-y: auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: .4rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: calc(100% - 2rem);
+            /* 减去padding的宽度 */
+            height: 30px;
+            padding: .2rem;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+        }
+
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+
+        .form-actions button {
+            padding: .8rem 1.5rem;
+            margin-left: 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-actions button:first-child {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .form-actions button:last-child {
+            background-color: #ccc;
+            color: #fff;
+        }
+
+        .form {
+            margin: 10px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-container {
+            display: flex;
+        }
+
+
+
+
+        .active {
+            background-color: #ccc;
+            /* 你希望的深色背景 */
+        }
+
+        .add_server {
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .model_all {
+            width: 100%;
+            height: calc(100vh - 105px);
+            margin-top: 6px;
+        }
+
+        .save {
+            background-color: rgb(238, 176, 61);
+            width: 49.56%;
+            vertical-align: middle;
+            display: inline-block;
+            border-top: 2px solid rgb(209, 209, 209);
+            height: 31px;
+            border-radius: 2px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .select {
+            width: 100%;
+            height: 100%;
+            background-color: aqua;
+            cursor: pointer;
+            padding: 0;
+            border-radius: 6px;
+        }
+
+        .model2_top {
+            width: 49.25%;
+            height: 420px;
+            display: inline-block;
+            background-color: skyblue;
+            border: 2px solid rgb(209, 209, 209);
+            margin-bottom: 2px;
+        }
+
+        .model2_middle {
+            background-color: #ffcd8f;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 2px;
+            border-top: 2px solid rgb(209, 209, 209);
+            border-bottom: 2px solid rgb(209, 209, 209);
+            cursor: pointer;
+            border-radius: 10px;
+
+        }
+
+        .model2_bottom_left {
+            display: inline-block;
+            vertical-align: middle;
+            height: 205px;
+            width: 49%;
+            background-color: aqua;
+            border-right: 2px solid rgb(209, 209, 209);
+            border-top: 2px solid rgb(209, 209, 209);
+        }
+
+        .model2_bottom_right {
+            display: inline-block;
+            vertical-align: middle;
+            height: 205px;
+            width: 49.8%;
+            background-color: aquamarine;
+            border-top: 2px solid rgb(209, 209, 209);
+            background-image: url('../assets/图片.jpg');
+            background-size: 100% 100%;
+            opacity: 0.8;
+        }
+
+        .context-menu {
+            position: fixed;
+            background-color: #afaf1c;
+            border: 2px solid #36a525;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .context-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .context-menu li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .context-menu li:hover {
+            background-color: rgb(135, 197, 53);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="main">
+        <div class="global-bar-top">
+            <div id="global-bar-top-container" class="global-menu">
+                <div class="global-menu-item icon">ideaFlow</div>
+                <!-- <div class="global-menu-item" v-for="menu_item in global.menu" style="cursor: pointer;">{{
+                    menu_item.hint }}
+                </div> -->
+            </div>
+        </div>
+        <div id="global-bar-left" class="global-bar-left"></div>
+
+        <div class="global-bar-bottom">
+            <div style="background-color: rgb(114, 161, 169); width: 100%;height: 100%;"></div>
+        </div>
+        <div class="global-context">
+            <div class="document-bar-top">
+                <div id="document-path" class="document-path"></div>
+            </div>
+            <div class="show_photo">
+                <div class="operate">
+                    <span title="后退">&#9668</span>
+                    <!-- 这里先当作测试show_model1 的按钮 -->
+                    <span title="前进" style="margin-right: 400px;" onclick="javascript:show_model2(event)">&#9658</span>
+                    <!-- 这里先当作测试show_model2 的按钮 -->
+
+                </div>
+                <!-- 
+                    这里是固定的一开始有一个可以变换的文档，作为rex代码，这里是现在的div上去填充
+                    同时后面存在model1和model2
+                    model1对应静态图片，静态图片的内容就只是一个div，里面展示图片，修改方法：v-if
+                    model2对应动态图片，动态图片的内容是三个框，分别展示不同的内容，修改方法：v-if
+                -->
+                <!-- 这里展示图片 -->
+                <!-- 如果觉得空，可以一开始插入图片，当查看自己的图片时，可以将已有图片替换掉 -->
+                <div id="model_all" class="model_all"></div>
+
+            </div>
+            <div class="show_PDF">
+                <div class="compile_button">
+                    <button class="button" onclick="javascript:Compile_PDF()">重新编译</button>
+                    <img src="src/导出.jpg" alt="" title="导出PDF" onclick="javascript:download_PDF()">
+                </div>
+                <div class="compile_PDF"><img src="src/PDF.jpg" alt="PDF image"></div>
+            </div>
+        </div>
+
+        <div id="middle1_container"></div>
+        <div id="middle2_container"></div>
+    </div>
+    <script src="js/utils/cookie/cookie.js"></script>
+    <script src="js/edit/edit.js"></script>
+    <script src="js/utils/axios/axios.min.js"></script>
+    <script>
+        edit_mounted();
+    </script>
+</body>

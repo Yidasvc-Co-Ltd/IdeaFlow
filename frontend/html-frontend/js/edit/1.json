@@ -1,0 +1,130 @@
+{
+    "fastpaper-document-info": {
+        "documentID": "1",
+        "isCollected": 0,
+        "paragraphs": "",
+        "path": "New Document 1",
+        "updateTime": "2024-04-10 16:54:18",
+        "userID": "qqq"
+    },
+    "edit": {
+        "global": {
+            "leftbar": [
+                {
+                    "key": "file",
+                    "hint": "文件",
+                    "icon": "src/favicon.ico",
+                    "component": null,
+                    "brighter": false
+                },
+                {
+                    "key": "server",
+                    "hint": "服务器管理",
+                    "icon": "src/favicon.ico",
+                    "component": null,
+                    "brighter": true
+                }
+            ]
+        },
+        "origin_div_color": "<div style=\"background-color: rgb(131, 226, 255);\">",
+        "deepem_div_color": "<div style=\"background-color: rgb(131, 226, 255);\">",
+        "document_info": {
+            "documentID": "1",
+            "isCollected": 0,
+            "paragraphs": "",
+            "path": "New Document 1",
+            "updateTime": "2024-04-10 16:54:18",
+            "userID": "qqq"
+        },
+        "showMiddle1": false,
+        "showMiddle2": true,
+        "uploadedDynImages": [],
+        "uploadedImages": [],
+        "selectedImage": null,
+        "img": null,
+        "dyn_img": false,
+        "currentDyn": "",
+        "hostsArray": [
+            {
+                "auth_method": "0",
+                "ip": "",
+                "jumpServerName": "",
+                "jumpServerUserID": "",
+                "key": "",
+                "login_command": "",
+                "name": "123",
+                "password": "",
+                "port": "",
+                "ssh_user": "",
+                "userID": "qqq"
+            },
+            {
+                "auth_method": "0",
+                "ip": "",
+                "jumpServerName": "",
+                "jumpServerUserID": "",
+                "key": "",
+                "login_command": "",
+                "name": "456",
+                "password": "",
+                "port": "",
+                "ssh_user": "",
+                "userID": "qqq"
+            },
+            {
+                "auth_method": "0",
+                "ip": "",
+                "jumpServerName": "",
+                "jumpServerUserID": "",
+                "key": "",
+                "login_command": "",
+                "name": "qe",
+                "password": "",
+                "port": "",
+                "ssh_user": "",
+                "userID": "qqq"
+            },
+            {
+                "auth_method": "0",
+                "ip": "",
+                "jumpServerName": "",
+                "jumpServerUserID": "",
+                "key": "",
+                "login_command": "",
+                "name": "suibian ",
+                "password": "",
+                "port": "",
+                "ssh_user": "",
+                "userID": "qqq"
+            }
+        ],
+        "showForm": false,
+        "currentModule": "module",
+        "formFields": {
+            "name": "",
+            "address": "",
+            "port": null,
+            "note": "",
+            "username": "",
+            "password": "",
+            "proxy_jump": ""
+        },
+        "select_server": "",
+        "server": "",
+        "isImageContextMenuVisible": {
+            "value": false
+        },
+        "isServerMenuVisible": false,
+        "imageContextMenuPosition": {
+            "x": 0,
+            "y": 0
+        },
+        "procedure": {
+            "codeGenTask": "codeGenTask",
+            "codeFig": "codeFig",
+            "tagQueue": "实验任务"
+        },
+        "text": "展示图片",
+        "prevIndex": 1
+    }
+}
